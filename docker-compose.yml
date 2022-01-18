@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  my_whanos:
+    container_name: my_whanos
+    build: .
+    environment:
+        - CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs
+        - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+        - USER_ADMIN_PASSWORD=epitech
+    volumes:
+        - ./jenkins/my_whanos.yml:/var/jenkins_home/casc_configs
+        - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+        - 8080:8080

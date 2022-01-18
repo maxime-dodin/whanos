@@ -1,0 +1,22 @@
+FROM maven
+
+SHELL [ "/bin/bash", "-c" ]
+
+COPY . .
+
+WORKDIR /app
+
+
+RUN mvn clean package
+
+
+FROM openjdk:17
+
+SHELL [ "/bin/bash", "-c" ]
+
+COPY --from=0 . .
+
+WORKDIR /app
+
+
+CMD ["java", "-jar", "target/app.jar"]

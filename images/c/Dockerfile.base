@@ -1,0 +1,13 @@
+FROM gcc:11.2
+
+SHELL [ "/bin/bash", "-c" ]
+
+WORKDIR /app
+
+COPY . .
+
+# RUN ["make"]
+
+# RUN find . -not -name compiled-app -delete
+
+# ENTRYPOINT ["./compiled-app"]
